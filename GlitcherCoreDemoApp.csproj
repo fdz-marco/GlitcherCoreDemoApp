@@ -18,5 +18,9 @@
     <Folder Include="Html\" />
     <Folder Include="Resources\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GlitcherCoreLib\GlitcherCoreLib.csproj" />
+  </ItemGroup>
 	
 </Project>

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlitcherCoreDemoApp", "GlitcherCoreDemoApp.csproj", "{28D970A3-8F68-4512-BC43-435994A01053}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlitcherCoreLib", "..\GlitcherCoreLib\GlitcherCoreLib.csproj", "{02CBA010-E9EA-4583-885E-17BE74A25CAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{28D970A3-8F68-4512-BC43-435994A01053}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28D970A3-8F68-4512-BC43-435994A01053}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28D970A3-8F68-4512-BC43-435994A01053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02CBA010-E9EA-4583-885E-17BE74A25CAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02CBA010-E9EA-4583-885E-17BE74A25CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02CBA010-E9EA-4583-885E-17BE74A25CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02CBA010-E9EA-4583-885E-17BE74A25CAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
