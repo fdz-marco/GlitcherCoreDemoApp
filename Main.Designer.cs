@@ -54,19 +54,42 @@
             lbl_Port_WS = new Label();
             grbx_QuickTools = new GroupBox();
             btn_Open_Browser = new Button();
+            btn_Start = new Button();
             btn_Open_AppFolder = new Button();
             btn_Open_LogViewer = new Button();
             grbx_Status = new GroupBox();
             chkLb_State = new CheckedListBox();
-            btn_Start = new Button();
+            grbx_MQTT = new GroupBox();
+            lbl_TopicSubscribe_MQTT = new Label();
+            lbl_TopicPublish_Topic_MQTT = new Label();
+            lbl_TopicPublish_Payload_MQTT = new Label();
+            txt_TopicPublish_Payload_MQTT = new TextBox();
+            btn_TopicPublish_MQTT = new Button();
+            txt_TopicPublish_Topic_MQTT = new TextBox();
+            btn_TopicSubscribe_MQTT = new Button();
+            txt_TopicSubscribe_MQTT = new TextBox();
+            chk_RestartOnUpdate_MQTT = new CheckBox();
+            btn_Stop_MQTT = new Button();
+            btn_Start_MQTT = new Button();
+            txt_Password_MQTT = new TextBox();
+            btn_Update_MQTT = new Button();
+            txt_Username_MQTT = new TextBox();
+            lbl_Username_MQTT = new Label();
+            lbl_Password_MQTT = new Label();
+            txt_Port_MQTT = new TextBox();
+            txt_Host_MQTT = new TextBox();
+            lbl_Host_MQTT = new Label();
+            lbl_Port_MQTT = new Label();
             grbx_HTTP.SuspendLayout();
             grbx_WS.SuspendLayout();
             grbx_QuickTools.SuspendLayout();
             grbx_Status.SuspendLayout();
+            grbx_MQTT.SuspendLayout();
             SuspendLayout();
             // 
             // grbx_HTTP
             // 
+            grbx_HTTP.BackColor = SystemColors.Control;
             grbx_HTTP.Controls.Add(btn_Stop_HTTP);
             grbx_HTTP.Controls.Add(chk_RestartOnUpdate_HTTP);
             grbx_HTTP.Controls.Add(btn_Start_HTTP);
@@ -207,6 +230,7 @@
             // 
             // grbx_WS
             // 
+            grbx_WS.BackColor = SystemColors.Control;
             grbx_WS.Controls.Add(btn_Stop_WS);
             grbx_WS.Controls.Add(btn_Start_WS);
             grbx_WS.Controls.Add(lbl_APIKey_WS);
@@ -324,7 +348,7 @@
             grbx_QuickTools.Controls.Add(btn_Start);
             grbx_QuickTools.Controls.Add(btn_Open_AppFolder);
             grbx_QuickTools.Controls.Add(btn_Open_LogViewer);
-            grbx_QuickTools.Location = new Point(397, 15);
+            grbx_QuickTools.Location = new Point(779, 15);
             grbx_QuickTools.Margin = new Padding(3, 4, 3, 4);
             grbx_QuickTools.Name = "grbx_QuickTools";
             grbx_QuickTools.Padding = new Padding(3, 4, 3, 4);
@@ -342,6 +366,16 @@
             btn_Open_Browser.Text = "Open Browser";
             btn_Open_Browser.UseVisualStyleBackColor = true;
             btn_Open_Browser.Click += btn_Open_Browser_Click;
+            // 
+            // btn_Start
+            // 
+            btn_Start.Location = new Point(7, 67);
+            btn_Start.Name = "btn_Start";
+            btn_Start.Size = new Size(357, 39);
+            btn_Start.TabIndex = 20;
+            btn_Start.Text = "START ALL!";
+            btn_Start.UseVisualStyleBackColor = true;
+            btn_Start.Click += btn_Start_Click;
             // 
             // btn_Open_AppFolder
             // 
@@ -366,11 +400,11 @@
             // grbx_Status
             // 
             grbx_Status.Controls.Add(chkLb_State);
-            grbx_Status.Location = new Point(397, 143);
+            grbx_Status.Location = new Point(779, 143);
             grbx_Status.Margin = new Padding(3, 4, 3, 4);
             grbx_Status.Name = "grbx_Status";
             grbx_Status.Padding = new Padding(3, 4, 3, 4);
-            grbx_Status.Size = new Size(374, 365);
+            grbx_Status.Size = new Size(376, 315);
             grbx_Status.TabIndex = 5;
             grbx_Status.TabStop = false;
             grbx_Status.Text = "Status";
@@ -378,28 +412,227 @@
             // chkLb_State
             // 
             chkLb_State.FormattingEnabled = true;
-            chkLb_State.Items.AddRange(new object[] { "HTTP Server Started", "HTTP Server Running", "Websocket Server Started", "Websocket Server Running", "Ready" });
+            chkLb_State.Items.AddRange(new object[] { "HTTP Server Started", "HTTP Server Running", "Websocket Server Started", "Websocket Server Running", "MQTT Connected", "Ready" });
             chkLb_State.Location = new Point(7, 27);
             chkLb_State.Margin = new Padding(3, 4, 3, 4);
             chkLb_State.Name = "chkLb_State";
-            chkLb_State.Size = new Size(356, 319);
+            chkLb_State.Size = new Size(356, 277);
             chkLb_State.TabIndex = 22;
             // 
-            // btn_Start
+            // grbx_MQTT
             // 
-            btn_Start.Location = new Point(7, 67);
-            btn_Start.Name = "btn_Start";
-            btn_Start.Size = new Size(356, 39);
-            btn_Start.TabIndex = 20;
-            btn_Start.Text = "START ALL!";
-            btn_Start.UseVisualStyleBackColor = true;
-            btn_Start.Click += btn_Start_Click;
+            grbx_MQTT.BackColor = SystemColors.Control;
+            grbx_MQTT.Controls.Add(lbl_TopicSubscribe_MQTT);
+            grbx_MQTT.Controls.Add(lbl_TopicPublish_Topic_MQTT);
+            grbx_MQTT.Controls.Add(lbl_TopicPublish_Payload_MQTT);
+            grbx_MQTT.Controls.Add(txt_TopicPublish_Payload_MQTT);
+            grbx_MQTT.Controls.Add(btn_TopicPublish_MQTT);
+            grbx_MQTT.Controls.Add(txt_TopicPublish_Topic_MQTT);
+            grbx_MQTT.Controls.Add(btn_TopicSubscribe_MQTT);
+            grbx_MQTT.Controls.Add(txt_TopicSubscribe_MQTT);
+            grbx_MQTT.Controls.Add(chk_RestartOnUpdate_MQTT);
+            grbx_MQTT.Controls.Add(btn_Stop_MQTT);
+            grbx_MQTT.Controls.Add(btn_Start_MQTT);
+            grbx_MQTT.Controls.Add(txt_Password_MQTT);
+            grbx_MQTT.Controls.Add(btn_Update_MQTT);
+            grbx_MQTT.Controls.Add(txt_Username_MQTT);
+            grbx_MQTT.Controls.Add(lbl_Username_MQTT);
+            grbx_MQTT.Controls.Add(lbl_Password_MQTT);
+            grbx_MQTT.Controls.Add(txt_Port_MQTT);
+            grbx_MQTT.Controls.Add(txt_Host_MQTT);
+            grbx_MQTT.Controls.Add(lbl_Host_MQTT);
+            grbx_MQTT.Controls.Add(lbl_Port_MQTT);
+            grbx_MQTT.Location = new Point(397, 15);
+            grbx_MQTT.Margin = new Padding(3, 4, 3, 4);
+            grbx_MQTT.Name = "grbx_MQTT";
+            grbx_MQTT.Padding = new Padding(3, 4, 3, 4);
+            grbx_MQTT.Size = new Size(376, 388);
+            grbx_MQTT.TabIndex = 6;
+            grbx_MQTT.TabStop = false;
+            grbx_MQTT.Text = "MQTT Client Settings";
+            // 
+            // lbl_TopicSubscribe_MQTT
+            // 
+            lbl_TopicSubscribe_MQTT.AutoSize = true;
+            lbl_TopicSubscribe_MQTT.Location = new Point(31, 266);
+            lbl_TopicSubscribe_MQTT.Name = "lbl_TopicSubscribe_MQTT";
+            lbl_TopicSubscribe_MQTT.Size = new Size(40, 19);
+            lbl_TopicSubscribe_MQTT.TabIndex = 39;
+            lbl_TopicSubscribe_MQTT.Text = "Topic";
+            // 
+            // lbl_TopicPublish_Topic_MQTT
+            // 
+            lbl_TopicPublish_Topic_MQTT.AutoSize = true;
+            lbl_TopicPublish_Topic_MQTT.Location = new Point(26, 317);
+            lbl_TopicPublish_Topic_MQTT.Name = "lbl_TopicPublish_Topic_MQTT";
+            lbl_TopicPublish_Topic_MQTT.Size = new Size(40, 19);
+            lbl_TopicPublish_Topic_MQTT.TabIndex = 37;
+            lbl_TopicPublish_Topic_MQTT.Text = "Topic";
+            // 
+            // lbl_TopicPublish_Payload_MQTT
+            // 
+            lbl_TopicPublish_Payload_MQTT.AutoSize = true;
+            lbl_TopicPublish_Payload_MQTT.Location = new Point(10, 351);
+            lbl_TopicPublish_Payload_MQTT.Name = "lbl_TopicPublish_Payload_MQTT";
+            lbl_TopicPublish_Payload_MQTT.Size = new Size(57, 19);
+            lbl_TopicPublish_Payload_MQTT.TabIndex = 38;
+            lbl_TopicPublish_Payload_MQTT.Text = "Payload";
+            // 
+            // txt_TopicPublish_Payload_MQTT
+            // 
+            txt_TopicPublish_Payload_MQTT.Location = new Point(73, 347);
+            txt_TopicPublish_Payload_MQTT.Name = "txt_TopicPublish_Payload_MQTT";
+            txt_TopicPublish_Payload_MQTT.Size = new Size(206, 26);
+            txt_TopicPublish_Payload_MQTT.TabIndex = 36;
+            // 
+            // btn_TopicPublish_MQTT
+            // 
+            btn_TopicPublish_MQTT.Location = new Point(287, 313);
+            btn_TopicPublish_MQTT.Name = "btn_TopicPublish_MQTT";
+            btn_TopicPublish_MQTT.Size = new Size(78, 65);
+            btn_TopicPublish_MQTT.TabIndex = 35;
+            btn_TopicPublish_MQTT.Text = "Publish";
+            btn_TopicPublish_MQTT.UseVisualStyleBackColor = true;
+            btn_TopicPublish_MQTT.Click += btn_TopicPublish_MQTT_Click;
+            // 
+            // txt_TopicPublish_Topic_MQTT
+            // 
+            txt_TopicPublish_Topic_MQTT.Location = new Point(73, 313);
+            txt_TopicPublish_Topic_MQTT.Name = "txt_TopicPublish_Topic_MQTT";
+            txt_TopicPublish_Topic_MQTT.Size = new Size(206, 26);
+            txt_TopicPublish_Topic_MQTT.TabIndex = 34;
+            // 
+            // btn_TopicSubscribe_MQTT
+            // 
+            btn_TopicSubscribe_MQTT.Location = new Point(287, 260);
+            btn_TopicSubscribe_MQTT.Name = "btn_TopicSubscribe_MQTT";
+            btn_TopicSubscribe_MQTT.Size = new Size(78, 30);
+            btn_TopicSubscribe_MQTT.TabIndex = 32;
+            btn_TopicSubscribe_MQTT.Text = "Subscribe";
+            btn_TopicSubscribe_MQTT.UseVisualStyleBackColor = true;
+            btn_TopicSubscribe_MQTT.Click += btn_TopicSubscribe_MQTT_Click;
+            // 
+            // txt_TopicSubscribe_MQTT
+            // 
+            txt_TopicSubscribe_MQTT.Location = new Point(73, 260);
+            txt_TopicSubscribe_MQTT.Name = "txt_TopicSubscribe_MQTT";
+            txt_TopicSubscribe_MQTT.Size = new Size(206, 26);
+            txt_TopicSubscribe_MQTT.TabIndex = 31;
+            // 
+            // chk_RestartOnUpdate_MQTT
+            // 
+            chk_RestartOnUpdate_MQTT.AutoSize = true;
+            chk_RestartOnUpdate_MQTT.Checked = true;
+            chk_RestartOnUpdate_MQTT.CheckState = CheckState.Checked;
+            chk_RestartOnUpdate_MQTT.Location = new Point(10, 176);
+            chk_RestartOnUpdate_MQTT.Name = "chk_RestartOnUpdate_MQTT";
+            chk_RestartOnUpdate_MQTT.Size = new Size(140, 23);
+            chk_RestartOnUpdate_MQTT.TabIndex = 25;
+            chk_RestartOnUpdate_MQTT.Text = "Restart on Update";
+            chk_RestartOnUpdate_MQTT.UseVisualStyleBackColor = true;
+            // 
+            // btn_Stop_MQTT
+            // 
+            btn_Stop_MQTT.Location = new Point(250, 205);
+            btn_Stop_MQTT.Name = "btn_Stop_MQTT";
+            btn_Stop_MQTT.Size = new Size(114, 30);
+            btn_Stop_MQTT.TabIndex = 29;
+            btn_Stop_MQTT.Text = "Stop";
+            btn_Stop_MQTT.UseVisualStyleBackColor = true;
+            btn_Stop_MQTT.Click += btn_Stop_MQTT_Click;
+            // 
+            // btn_Start_MQTT
+            // 
+            btn_Start_MQTT.Location = new Point(129, 205);
+            btn_Start_MQTT.Name = "btn_Start_MQTT";
+            btn_Start_MQTT.Size = new Size(114, 30);
+            btn_Start_MQTT.TabIndex = 28;
+            btn_Start_MQTT.Text = "Start";
+            btn_Start_MQTT.UseVisualStyleBackColor = true;
+            btn_Start_MQTT.Click += btn_Start_MQTT_Click;
+            // 
+            // txt_Password_MQTT
+            // 
+            txt_Password_MQTT.Location = new Point(150, 137);
+            txt_Password_MQTT.Name = "txt_Password_MQTT";
+            txt_Password_MQTT.Size = new Size(203, 26);
+            txt_Password_MQTT.TabIndex = 29;
+            // 
+            // btn_Update_MQTT
+            // 
+            btn_Update_MQTT.Location = new Point(8, 205);
+            btn_Update_MQTT.Name = "btn_Update_MQTT";
+            btn_Update_MQTT.Size = new Size(114, 30);
+            btn_Update_MQTT.TabIndex = 27;
+            btn_Update_MQTT.Text = "Update";
+            btn_Update_MQTT.UseVisualStyleBackColor = true;
+            btn_Update_MQTT.Click += btn_Update_MQTT_Click;
+            // 
+            // txt_Username_MQTT
+            // 
+            txt_Username_MQTT.Location = new Point(150, 101);
+            txt_Username_MQTT.Name = "txt_Username_MQTT";
+            txt_Username_MQTT.Size = new Size(203, 26);
+            txt_Username_MQTT.TabIndex = 28;
+            // 
+            // lbl_Username_MQTT
+            // 
+            lbl_Username_MQTT.AutoSize = true;
+            lbl_Username_MQTT.Location = new Point(73, 105);
+            lbl_Username_MQTT.Name = "lbl_Username_MQTT";
+            lbl_Username_MQTT.Size = new Size(71, 19);
+            lbl_Username_MQTT.TabIndex = 26;
+            lbl_Username_MQTT.Text = "Username";
+            // 
+            // lbl_Password_MQTT
+            // 
+            lbl_Password_MQTT.AutoSize = true;
+            lbl_Password_MQTT.Location = new Point(77, 141);
+            lbl_Password_MQTT.Name = "lbl_Password_MQTT";
+            lbl_Password_MQTT.Size = new Size(67, 19);
+            lbl_Password_MQTT.TabIndex = 27;
+            lbl_Password_MQTT.Text = "Password";
+            // 
+            // txt_Port_MQTT
+            // 
+            txt_Port_MQTT.Location = new Point(150, 62);
+            txt_Port_MQTT.Name = "txt_Port_MQTT";
+            txt_Port_MQTT.Size = new Size(203, 26);
+            txt_Port_MQTT.TabIndex = 25;
+            txt_Port_MQTT.Text = "1883";
+            // 
+            // txt_Host_MQTT
+            // 
+            txt_Host_MQTT.Location = new Point(150, 27);
+            txt_Host_MQTT.Name = "txt_Host_MQTT";
+            txt_Host_MQTT.Size = new Size(203, 26);
+            txt_Host_MQTT.TabIndex = 24;
+            txt_Host_MQTT.Text = "localhost";
+            // 
+            // lbl_Host_MQTT
+            // 
+            lbl_Host_MQTT.AutoSize = true;
+            lbl_Host_MQTT.Location = new Point(109, 30);
+            lbl_Host_MQTT.Name = "lbl_Host_MQTT";
+            lbl_Host_MQTT.Size = new Size(38, 19);
+            lbl_Host_MQTT.TabIndex = 22;
+            lbl_Host_MQTT.Text = "Host";
+            // 
+            // lbl_Port_MQTT
+            // 
+            lbl_Port_MQTT.AutoSize = true;
+            lbl_Port_MQTT.Location = new Point(109, 66);
+            lbl_Port_MQTT.Name = "lbl_Port_MQTT";
+            lbl_Port_MQTT.Size = new Size(34, 19);
+            lbl_Port_MQTT.TabIndex = 23;
+            lbl_Port_MQTT.Text = "Port";
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(786, 519);
+            ClientSize = new Size(1167, 520);
+            Controls.Add(grbx_MQTT);
             Controls.Add(grbx_Status);
             Controls.Add(grbx_QuickTools);
             Controls.Add(grbx_WS);
@@ -414,6 +647,8 @@
             grbx_WS.PerformLayout();
             grbx_QuickTools.ResumeLayout(false);
             grbx_Status.ResumeLayout(false);
+            grbx_MQTT.ResumeLayout(false);
+            grbx_MQTT.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -450,5 +685,26 @@
         private GroupBox grbx_Status;
         private CheckedListBox chkLb_State;
         private Button btn_Start;
+        private GroupBox grbx_MQTT;
+        private CheckBox chk_RestartOnUpdate_MQTT;
+        private Button btn_Stop_MQTT;
+        private Button btn_Start_MQTT;
+        private TextBox txt_Password_MQTT;
+        private Button btn_Update_MQTT;
+        private TextBox txt_Username_MQTT;
+        private Label lbl_Username_MQTT;
+        private Label lbl_Password_MQTT;
+        private TextBox txt_Port_MQTT;
+        private TextBox txt_Host_MQTT;
+        private Label lbl_Host_MQTT;
+        private Label lbl_Port_MQTT;
+        private Button btn_TopicSubscribe_MQTT;
+        private TextBox txt_TopicSubscribe_MQTT;
+        private Label lbl_TopicSubscribe_MQTT;
+        private Label lbl_TopicPublish_Topic_MQTT;
+        private Label lbl_TopicPublish_Payload_MQTT;
+        private TextBox txt_TopicPublish_Payload_MQTT;
+        private Button btn_TopicPublish_MQTT;
+        private TextBox txt_TopicPublish_Topic_MQTT;
     }
 }
