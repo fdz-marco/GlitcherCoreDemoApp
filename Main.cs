@@ -1,9 +1,9 @@
-using glitcher.core;
-using glitcher.core.Servers;
 using System.Reflection;
 using System.Windows.Forms;
+using glitcher.core;
 using Servers = glitcher.core.Servers;
 using Clients = glitcher.core.Clients;
+using Databases = glitcher.core.Databases;
 
 namespace GlitcherCoreDemoApp
 {
@@ -12,6 +12,8 @@ namespace GlitcherCoreDemoApp
         private Servers.LightHTTPServer? _httpServer = null;
         private Servers.WebSocketServer _wsServer = null;
         private Clients.MQTTClient _mqttClient = null;
+        private Databases.SQLiteClient _sqLiteClient = null;
+        private Databases.MySQLClient _mySqlClient = null;
         private SystemTray? _sysTray = null;
 
         public Main()
@@ -22,9 +24,11 @@ namespace GlitcherCoreDemoApp
             _httpServer.ServeFirstLocal = true;
             _wsServer = new Servers.WebSocketServer(8081, 10, "", false);
             _mqttClient = new Clients.MQTTClient("localhost", 1883, "", "", Clients.MQTTClient.Protocol.mqtt, false);
+            _sqLiteClient = new Databases.SQLiteClient("database.db", false);
+            _mySqlClient = new Databases.MySQLClient("localhost",3306,"","root","",false);
             _sysTray = new SystemTray();
             Init_SystemTray();
-            new HandlerStateManager(this, ref _httpServer, ref _wsServer, ref _mqttClient);
+            new HandlerStateManager(this, ref _httpServer, ref _wsServer, ref _mqttClient, ref _sqLiteClient, ref _mySqlClient);
         }
 
         #region SysTray
@@ -151,6 +155,64 @@ namespace GlitcherCoreDemoApp
 
         #endregion
 
+        #region SQLite Client
+
+        private void btn_Connect_SQLite_Click(object sender, EventArgs e)
+        {
+            if (_sqLiteClient != null)
+            {
+                _sqLiteClient.Connect();
+            }
+        }
+
+        private void btn_Disconnect_SQLite_Click(object sender, EventArgs e)
+        {
+            if (_sqLiteClient != null)
+            {
+                _sqLiteClient.Disconnect();
+            }
+        }
+
+        private async void btn_Update_SQLite_Click(object sender, EventArgs e)
+        {
+            string server = txt_Server_SQLite.Text.Trim();
+            bool restartOnUpdate = chk_RestartOnUpdate_SQLite.Checked;
+            await _sqLiteClient.Update(server, restartOnUpdate);
+        }
+
+        #endregion
+
+        #region MySQL Client
+
+        private void btn_Connect_MySQL_Click(object sender, EventArgs e)
+        {
+            if (_mySqlClient != null)
+            {
+                _mySqlClient.Connect();
+            }
+        }
+
+        private void btn_Disconnect_MySQL_Click(object sender, EventArgs e)
+        {
+            if (_mySqlClient != null)
+            {
+                _mySqlClient.Disconnect();
+            }
+        }
+
+        private async void btn_Update_MySQL_Click(object sender, EventArgs e)
+        {
+            string server = txt_Server_MySQL.Text.Trim();
+            int.TryParse(txt_Port_MySQL.Text.Trim(), out int port);
+            string database = txt_Database_MySQL.Text.Trim();
+            string user = txt_Username_MySQL.Text.Trim();
+            string pswd = txt_Password_MySQL.Text.Trim();
+            bool restartOnUpdate = chk_RestartOnUpdate_MySQL.Checked;
+            await _mySqlClient.Update(server, port, database, user, pswd, restartOnUpdate);
+        }
+
+        #endregion
+
         #region Quick Tools
 
         private void btn_Open_LogViewer_Click(object sender, EventArgs e)
@@ -183,8 +245,6 @@ namespace GlitcherCoreDemoApp
         }
 
         #endregion
-
-
 
     }
 }

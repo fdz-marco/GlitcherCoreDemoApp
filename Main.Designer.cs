@@ -80,16 +80,40 @@
             txt_Host_MQTT = new TextBox();
             lbl_Host_MQTT = new Label();
             lbl_Port_MQTT = new Label();
+            grbx_SQLite = new GroupBox();
+            chk_RestartOnUpdate_SQLite = new CheckBox();
+            btn_Disconnect_SQLite = new Button();
+            btn_Connect_SQLite = new Button();
+            btn_Update_SQLite = new Button();
+            txt_Server_SQLite = new TextBox();
+            lbl_Server_SQLite = new Label();
+            grbx_MySQL = new GroupBox();
+            txt_Database_MySQL = new TextBox();
+            lbl_Database_MySQL = new Label();
+            chk_RestartOnUpdate_MySQL = new CheckBox();
+            btn_Disconnect_MySQL = new Button();
+            btn_Connect_MySQL = new Button();
+            txt_Password_MySQL = new TextBox();
+            btn_Update_MySQL = new Button();
+            txt_Username_MySQL = new TextBox();
+            lbl_Username_MySQL = new Label();
+            lbl_Password_MySQL = new Label();
+            txt_Port_MySQL = new TextBox();
+            txt_Server_MySQL = new TextBox();
+            lbl_Server_MySQL = new Label();
+            lbl_Port_MySQL = new Label();
             grbx_HTTP.SuspendLayout();
             grbx_WS.SuspendLayout();
             grbx_QuickTools.SuspendLayout();
             grbx_Status.SuspendLayout();
             grbx_MQTT.SuspendLayout();
+            grbx_SQLite.SuspendLayout();
+            grbx_MySQL.SuspendLayout();
             SuspendLayout();
             // 
             // grbx_HTTP
             // 
-            grbx_HTTP.BackColor = SystemColors.Control;
+            grbx_HTTP.BackColor = Color.LavenderBlush;
             grbx_HTTP.Controls.Add(btn_Stop_HTTP);
             grbx_HTTP.Controls.Add(chk_RestartOnUpdate_HTTP);
             grbx_HTTP.Controls.Add(btn_Start_HTTP);
@@ -230,7 +254,7 @@
             // 
             // grbx_WS
             // 
-            grbx_WS.BackColor = SystemColors.Control;
+            grbx_WS.BackColor = Color.AntiqueWhite;
             grbx_WS.Controls.Add(btn_Stop_WS);
             grbx_WS.Controls.Add(btn_Start_WS);
             grbx_WS.Controls.Add(lbl_APIKey_WS);
@@ -344,6 +368,7 @@
             // 
             // grbx_QuickTools
             // 
+            grbx_QuickTools.BackColor = Color.Linen;
             grbx_QuickTools.Controls.Add(btn_Open_Browser);
             grbx_QuickTools.Controls.Add(btn_Start);
             grbx_QuickTools.Controls.Add(btn_Open_AppFolder);
@@ -399,6 +424,7 @@
             // 
             // grbx_Status
             // 
+            grbx_Status.BackColor = Color.Honeydew;
             grbx_Status.Controls.Add(chkLb_State);
             grbx_Status.Location = new Point(779, 143);
             grbx_Status.Margin = new Padding(3, 4, 3, 4);
@@ -412,7 +438,7 @@
             // chkLb_State
             // 
             chkLb_State.FormattingEnabled = true;
-            chkLb_State.Items.AddRange(new object[] { "HTTP Server Started", "HTTP Server Running", "Websocket Server Started", "Websocket Server Running", "MQTT Connected", "Ready" });
+            chkLb_State.Items.AddRange(new object[] { "HTTP Server Started", "HTTP Server Running", "Websocket Server Started", "Websocket Server Running", "MQTT Connected", "SQLite Client Connected", "MySQL Client Connected", "Ready" });
             chkLb_State.Location = new Point(7, 27);
             chkLb_State.Margin = new Padding(3, 4, 3, 4);
             chkLb_State.Name = "chkLb_State";
@@ -421,7 +447,7 @@
             // 
             // grbx_MQTT
             // 
-            grbx_MQTT.BackColor = SystemColors.Control;
+            grbx_MQTT.BackColor = Color.Beige;
             grbx_MQTT.Controls.Add(lbl_TopicSubscribe_MQTT);
             grbx_MQTT.Controls.Add(lbl_TopicPublish_Topic_MQTT);
             grbx_MQTT.Controls.Add(lbl_TopicPublish_Payload_MQTT);
@@ -442,7 +468,7 @@
             grbx_MQTT.Controls.Add(txt_Host_MQTT);
             grbx_MQTT.Controls.Add(lbl_Host_MQTT);
             grbx_MQTT.Controls.Add(lbl_Port_MQTT);
-            grbx_MQTT.Location = new Point(397, 15);
+            grbx_MQTT.Location = new Point(14, 516);
             grbx_MQTT.Margin = new Padding(3, 4, 3, 4);
             grbx_MQTT.Name = "grbx_MQTT";
             grbx_MQTT.Padding = new Padding(3, 4, 3, 4);
@@ -627,11 +653,241 @@
             lbl_Port_MQTT.TabIndex = 23;
             lbl_Port_MQTT.Text = "Port";
             // 
+            // grbx_SQLite
+            // 
+            grbx_SQLite.BackColor = Color.AliceBlue;
+            grbx_SQLite.Controls.Add(chk_RestartOnUpdate_SQLite);
+            grbx_SQLite.Controls.Add(btn_Disconnect_SQLite);
+            grbx_SQLite.Controls.Add(btn_Connect_SQLite);
+            grbx_SQLite.Controls.Add(btn_Update_SQLite);
+            grbx_SQLite.Controls.Add(txt_Server_SQLite);
+            grbx_SQLite.Controls.Add(lbl_Server_SQLite);
+            grbx_SQLite.Location = new Point(397, 15);
+            grbx_SQLite.Margin = new Padding(3, 4, 3, 4);
+            grbx_SQLite.Name = "grbx_SQLite";
+            grbx_SQLite.Padding = new Padding(3, 4, 3, 4);
+            grbx_SQLite.Size = new Size(376, 133);
+            grbx_SQLite.TabIndex = 7;
+            grbx_SQLite.TabStop = false;
+            grbx_SQLite.Text = "SQLite Client Settings";
+            // 
+            // chk_RestartOnUpdate_SQLite
+            // 
+            chk_RestartOnUpdate_SQLite.AutoSize = true;
+            chk_RestartOnUpdate_SQLite.Checked = true;
+            chk_RestartOnUpdate_SQLite.CheckState = CheckState.Checked;
+            chk_RestartOnUpdate_SQLite.Location = new Point(12, 61);
+            chk_RestartOnUpdate_SQLite.Name = "chk_RestartOnUpdate_SQLite";
+            chk_RestartOnUpdate_SQLite.Size = new Size(140, 23);
+            chk_RestartOnUpdate_SQLite.TabIndex = 25;
+            chk_RestartOnUpdate_SQLite.Text = "Restart on Update";
+            chk_RestartOnUpdate_SQLite.UseVisualStyleBackColor = true;
+            // 
+            // btn_Disconnect_SQLite
+            // 
+            btn_Disconnect_SQLite.Location = new Point(252, 89);
+            btn_Disconnect_SQLite.Name = "btn_Disconnect_SQLite";
+            btn_Disconnect_SQLite.Size = new Size(114, 30);
+            btn_Disconnect_SQLite.TabIndex = 29;
+            btn_Disconnect_SQLite.Text = "Disconnect";
+            btn_Disconnect_SQLite.UseVisualStyleBackColor = true;
+            btn_Disconnect_SQLite.Click += btn_Disconnect_SQLite_Click;
+            // 
+            // btn_Connect_SQLite
+            // 
+            btn_Connect_SQLite.Location = new Point(131, 89);
+            btn_Connect_SQLite.Name = "btn_Connect_SQLite";
+            btn_Connect_SQLite.Size = new Size(114, 30);
+            btn_Connect_SQLite.TabIndex = 28;
+            btn_Connect_SQLite.Text = "Connect";
+            btn_Connect_SQLite.UseVisualStyleBackColor = true;
+            btn_Connect_SQLite.Click += btn_Connect_SQLite_Click;
+            // 
+            // btn_Update_SQLite
+            // 
+            btn_Update_SQLite.Location = new Point(10, 89);
+            btn_Update_SQLite.Name = "btn_Update_SQLite";
+            btn_Update_SQLite.Size = new Size(114, 30);
+            btn_Update_SQLite.TabIndex = 27;
+            btn_Update_SQLite.Text = "Update";
+            btn_Update_SQLite.UseVisualStyleBackColor = true;
+            btn_Update_SQLite.Click += btn_Update_SQLite_Click;
+            // 
+            // txt_Server_SQLite
+            // 
+            txt_Server_SQLite.Location = new Point(150, 27);
+            txt_Server_SQLite.Name = "txt_Server_SQLite";
+            txt_Server_SQLite.Size = new Size(203, 26);
+            txt_Server_SQLite.TabIndex = 24;
+            txt_Server_SQLite.Text = "database.db";
+            // 
+            // lbl_Server_SQLite
+            // 
+            lbl_Server_SQLite.AutoSize = true;
+            lbl_Server_SQLite.Location = new Point(97, 30);
+            lbl_Server_SQLite.Name = "lbl_Server_SQLite";
+            lbl_Server_SQLite.Size = new Size(47, 19);
+            lbl_Server_SQLite.TabIndex = 22;
+            lbl_Server_SQLite.Text = "Server";
+            // 
+            // grbx_MySQL
+            // 
+            grbx_MySQL.BackColor = Color.Lavender;
+            grbx_MySQL.Controls.Add(txt_Database_MySQL);
+            grbx_MySQL.Controls.Add(lbl_Database_MySQL);
+            grbx_MySQL.Controls.Add(chk_RestartOnUpdate_MySQL);
+            grbx_MySQL.Controls.Add(btn_Disconnect_MySQL);
+            grbx_MySQL.Controls.Add(btn_Connect_MySQL);
+            grbx_MySQL.Controls.Add(txt_Password_MySQL);
+            grbx_MySQL.Controls.Add(btn_Update_MySQL);
+            grbx_MySQL.Controls.Add(txt_Username_MySQL);
+            grbx_MySQL.Controls.Add(lbl_Username_MySQL);
+            grbx_MySQL.Controls.Add(lbl_Password_MySQL);
+            grbx_MySQL.Controls.Add(txt_Port_MySQL);
+            grbx_MySQL.Controls.Add(txt_Server_MySQL);
+            grbx_MySQL.Controls.Add(lbl_Server_MySQL);
+            grbx_MySQL.Controls.Add(lbl_Port_MySQL);
+            grbx_MySQL.Location = new Point(397, 156);
+            grbx_MySQL.Margin = new Padding(3, 4, 3, 4);
+            grbx_MySQL.Name = "grbx_MySQL";
+            grbx_MySQL.Padding = new Padding(3, 4, 3, 4);
+            grbx_MySQL.Size = new Size(376, 285);
+            grbx_MySQL.TabIndex = 8;
+            grbx_MySQL.TabStop = false;
+            grbx_MySQL.Text = "MySQL Client Settings";
+            // 
+            // txt_Database_MySQL
+            // 
+            txt_Database_MySQL.Location = new Point(150, 175);
+            txt_Database_MySQL.Name = "txt_Database_MySQL";
+            txt_Database_MySQL.Size = new Size(203, 26);
+            txt_Database_MySQL.TabIndex = 31;
+            // 
+            // lbl_Database_MySQL
+            // 
+            lbl_Database_MySQL.AutoSize = true;
+            lbl_Database_MySQL.Location = new Point(78, 179);
+            lbl_Database_MySQL.Name = "lbl_Database_MySQL";
+            lbl_Database_MySQL.Size = new Size(66, 19);
+            lbl_Database_MySQL.TabIndex = 30;
+            lbl_Database_MySQL.Text = "Database";
+            // 
+            // chk_RestartOnUpdate_MySQL
+            // 
+            chk_RestartOnUpdate_MySQL.AutoSize = true;
+            chk_RestartOnUpdate_MySQL.Checked = true;
+            chk_RestartOnUpdate_MySQL.CheckState = CheckState.Checked;
+            chk_RestartOnUpdate_MySQL.Location = new Point(12, 210);
+            chk_RestartOnUpdate_MySQL.Name = "chk_RestartOnUpdate_MySQL";
+            chk_RestartOnUpdate_MySQL.Size = new Size(140, 23);
+            chk_RestartOnUpdate_MySQL.TabIndex = 25;
+            chk_RestartOnUpdate_MySQL.Text = "Restart on Update";
+            chk_RestartOnUpdate_MySQL.UseVisualStyleBackColor = true;
+            // 
+            // btn_Disconnect_MySQL
+            // 
+            btn_Disconnect_MySQL.Location = new Point(252, 237);
+            btn_Disconnect_MySQL.Name = "btn_Disconnect_MySQL";
+            btn_Disconnect_MySQL.Size = new Size(114, 30);
+            btn_Disconnect_MySQL.TabIndex = 29;
+            btn_Disconnect_MySQL.Text = "Disconnect";
+            btn_Disconnect_MySQL.UseVisualStyleBackColor = true;
+            btn_Disconnect_MySQL.Click += btn_Disconnect_MySQL_Click;
+            // 
+            // btn_Connect_MySQL
+            // 
+            btn_Connect_MySQL.Location = new Point(131, 237);
+            btn_Connect_MySQL.Name = "btn_Connect_MySQL";
+            btn_Connect_MySQL.Size = new Size(114, 30);
+            btn_Connect_MySQL.TabIndex = 28;
+            btn_Connect_MySQL.Text = "Connect";
+            btn_Connect_MySQL.UseVisualStyleBackColor = true;
+            btn_Connect_MySQL.Click += btn_Connect_MySQL_Click;
+            // 
+            // txt_Password_MySQL
+            // 
+            txt_Password_MySQL.Location = new Point(150, 137);
+            txt_Password_MySQL.Name = "txt_Password_MySQL";
+            txt_Password_MySQL.Size = new Size(203, 26);
+            txt_Password_MySQL.TabIndex = 29;
+            // 
+            // btn_Update_MySQL
+            // 
+            btn_Update_MySQL.Location = new Point(10, 237);
+            btn_Update_MySQL.Name = "btn_Update_MySQL";
+            btn_Update_MySQL.Size = new Size(114, 30);
+            btn_Update_MySQL.TabIndex = 27;
+            btn_Update_MySQL.Text = "Update";
+            btn_Update_MySQL.UseVisualStyleBackColor = true;
+            btn_Update_MySQL.Click += btn_Update_MySQL_Click;
+            // 
+            // txt_Username_MySQL
+            // 
+            txt_Username_MySQL.Location = new Point(150, 101);
+            txt_Username_MySQL.Name = "txt_Username_MySQL";
+            txt_Username_MySQL.Size = new Size(203, 26);
+            txt_Username_MySQL.TabIndex = 28;
+            txt_Username_MySQL.Text = "root";
+            // 
+            // lbl_Username_MySQL
+            // 
+            lbl_Username_MySQL.AutoSize = true;
+            lbl_Username_MySQL.Location = new Point(73, 107);
+            lbl_Username_MySQL.Name = "lbl_Username_MySQL";
+            lbl_Username_MySQL.Size = new Size(71, 19);
+            lbl_Username_MySQL.TabIndex = 26;
+            lbl_Username_MySQL.Text = "Username";
+            // 
+            // lbl_Password_MySQL
+            // 
+            lbl_Password_MySQL.AutoSize = true;
+            lbl_Password_MySQL.Location = new Point(77, 143);
+            lbl_Password_MySQL.Name = "lbl_Password_MySQL";
+            lbl_Password_MySQL.Size = new Size(67, 19);
+            lbl_Password_MySQL.TabIndex = 27;
+            lbl_Password_MySQL.Text = "Password";
+            // 
+            // txt_Port_MySQL
+            // 
+            txt_Port_MySQL.Location = new Point(150, 62);
+            txt_Port_MySQL.Name = "txt_Port_MySQL";
+            txt_Port_MySQL.Size = new Size(203, 26);
+            txt_Port_MySQL.TabIndex = 25;
+            txt_Port_MySQL.Text = "3306";
+            // 
+            // txt_Server_MySQL
+            // 
+            txt_Server_MySQL.Location = new Point(150, 27);
+            txt_Server_MySQL.Name = "txt_Server_MySQL";
+            txt_Server_MySQL.Size = new Size(203, 26);
+            txt_Server_MySQL.TabIndex = 24;
+            txt_Server_MySQL.Text = "localhost";
+            // 
+            // lbl_Server_MySQL
+            // 
+            lbl_Server_MySQL.AutoSize = true;
+            lbl_Server_MySQL.Location = new Point(97, 31);
+            lbl_Server_MySQL.Name = "lbl_Server_MySQL";
+            lbl_Server_MySQL.Size = new Size(47, 19);
+            lbl_Server_MySQL.TabIndex = 22;
+            lbl_Server_MySQL.Text = "Server";
+            // 
+            // lbl_Port_MySQL
+            // 
+            lbl_Port_MySQL.AutoSize = true;
+            lbl_Port_MySQL.Location = new Point(110, 66);
+            lbl_Port_MySQL.Name = "lbl_Port_MySQL";
+            lbl_Port_MySQL.Size = new Size(34, 19);
+            lbl_Port_MySQL.TabIndex = 23;
+            lbl_Port_MySQL.Text = "Port";
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1167, 520);
+            ClientSize = new Size(1167, 915);
+            Controls.Add(grbx_MySQL);
+            Controls.Add(grbx_SQLite);
             Controls.Add(grbx_MQTT);
             Controls.Add(grbx_Status);
             Controls.Add(grbx_QuickTools);
@@ -649,6 +905,10 @@
             grbx_Status.ResumeLayout(false);
             grbx_MQTT.ResumeLayout(false);
             grbx_MQTT.PerformLayout();
+            grbx_SQLite.ResumeLayout(false);
+            grbx_SQLite.PerformLayout();
+            grbx_MySQL.ResumeLayout(false);
+            grbx_MySQL.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -706,5 +966,27 @@
         private TextBox txt_TopicPublish_Payload_MQTT;
         private Button btn_TopicPublish_MQTT;
         private TextBox txt_TopicPublish_Topic_MQTT;
+        private GroupBox grbx_SQLite;
+        private CheckBox chk_RestartOnUpdate_SQLite;
+        private Button btn_Disconnect_SQLite;
+        private Button btn_Connect_SQLite;
+        private Button btn_Update_SQLite;
+        private TextBox txt_Server_SQLite;
+        private Label lbl_Server_SQLite;
+        private GroupBox grbx_MySQL;
+        private TextBox txt_Database_MySQL;
+        private Label lbl_Database_MySQL;
+        private CheckBox chk_RestartOnUpdate_MySQL;
+        private Button btn_Disconnect_MySQL;
+        private Button btn_Connect_MySQL;
+        private TextBox txt_Password_MySQL;
+        private Button btn_Update_MySQL;
+        private TextBox txt_Username_MySQL;
+        private Label lbl_Username_MySQL;
+        private Label lbl_Password_MySQL;
+        private TextBox txt_Port_MySQL;
+        private TextBox txt_Server_MySQL;
+        private Label lbl_Server_MySQL;
+        private Label lbl_Port_MySQL;
     }
 }

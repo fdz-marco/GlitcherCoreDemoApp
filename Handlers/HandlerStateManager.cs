@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Servers = glitcher.core.Servers;
 using Clients = glitcher.core.Clients;
+using Databases = glitcher.core.Databases;
 
 namespace GlitcherCoreDemoApp
 {
@@ -12,17 +13,28 @@ namespace GlitcherCoreDemoApp
         Servers.LightHTTPServer _httpServer = null;
         Servers.WebSocketServer _wsServer = null;
         Clients.MQTTClient _mqttClient = null;
+        Databases.SQLiteClient _sqLiteClient = null;
+        Databases.MySQLClient _mySqlClient = null;
         Form form = null;
 
-        public HandlerStateManager(Form form, ref Servers.LightHTTPServer _httpServer, ref Servers.WebSocketServer _wsServer, ref Clients.MQTTClient _mqttClient)
+        public HandlerStateManager(Form form, 
+            ref Servers.LightHTTPServer _httpServer, ref Servers.WebSocketServer _wsServer, 
+            ref Clients.MQTTClient _mqttClient,
+            ref Databases.SQLiteClient _sqLiteClient, ref Databases.MySQLClient _mySqlClient
+            )
         {
             this.form = form;
             this._httpServer = _httpServer;
             this._wsServer = _wsServer;
             this._mqttClient = _mqttClient;
+            this._sqLiteClient = _sqLiteClient;
+            this._mySqlClient = _mySqlClient;
+
             _httpServer.ChangeOccurred += _httpServer_ChangeOccurred;
             _wsServer.ChangeOccurred += _wsServer_ChangeOccurred;
             _mqttClient.ChangeOccurred += _mqttClient_ChangeOccurred;
+            _sqLiteClient.ChangeOccurred += _sqLiteClient_ChangeOccurred;
+            _mySqlClient.ChangeOccurred += _mySqlClient_ChangeOccurred;
         }
 
         private void CheckStateAllDone()
@@ -79,5 +91,32 @@ namespace GlitcherCoreDemoApp
             }
             CheckStateAllDone();
         }
+
+        private void _sqLiteClient_ChangeOccurred(object? sender, Databases.SQLiteClientEvent e)
+        {
+            CheckedListBox chkLb_State = (CheckedListBox)Utils.FindControlRecursive(this.form, "chkLb_State");
+
+            if (e.eventType == "connected")
+                chkLb_State.SetItemChecked(5, true);
+            if (e.eventType == "disconnected")
+            {
+                chkLb_State.SetItemChecked(5, false);
+            }
+            CheckStateAllDone();
+        }
+
+        private void _mySqlClient_ChangeOccurred(object? sender, Databases.MySQLClientEvent e)
+        {
+            CheckedListBox chkLb_State = (CheckedListBox)Utils.FindControlRecursive(this.form, "chkLb_State");
+
+            if (e.eventType == "connected")
+                chkLb_State.SetItemChecked(6, true);
+            if (e.eventType == "disconnected")
+            {
+                chkLb_State.SetItemChecked(6, false);
+            }
+            CheckStateAllDone();
+        }
+
     }
 }
