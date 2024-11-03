@@ -4,6 +4,7 @@ using glitcher.core;
 using Servers = glitcher.core.Servers;
 using Clients = glitcher.core.Clients;
 using Databases = glitcher.core.Databases;
+using PLC = glitcher.core.PLC;
 
 namespace GlitcherCoreDemoApp
 {
@@ -14,6 +15,7 @@ namespace GlitcherCoreDemoApp
         private Clients.MQTTClient _mqttClient = null;
         private Databases.SQLiteClient _sqLiteClient = null;
         private Databases.MySQLClient _mySqlClient = null;
+        private PLC.Beckhoff.ADSClient _adsClient = null;
         private SystemTray? _sysTray = null;
 
         public Main()
@@ -25,7 +27,8 @@ namespace GlitcherCoreDemoApp
             _wsServer = new Servers.WebSocketServer(8081, 10, "", false);
             _mqttClient = new Clients.MQTTClient("localhost", 1883, "", "", Clients.MQTTClient.Protocol.mqtt, false);
             _sqLiteClient = new Databases.SQLiteClient("database.db", false);
-            _mySqlClient = new Databases.MySQLClient("localhost",3306,"","root","",false);
+            _mySqlClient = new Databases.MySQLClient("localhost", 3306, "", "root", "", false);
+            _adsClient = new PLC.Beckhoff.ADSClient("127.0.0.1", 851, "127.0.0.1.1.1", false);
             _sysTray = new SystemTray();
             Init_SystemTray();
             new HandlerStateManager(this, ref _httpServer, ref _wsServer, ref _mqttClient, ref _sqLiteClient, ref _mySqlClient);
@@ -213,6 +216,40 @@ namespace GlitcherCoreDemoApp
 
         #endregion
 
+        #region ADS Client (Beckhoff TwinCAT)
+
+        private void btn_Connect_ADS_Click(object sender, EventArgs e)
+        {
+            if (_adsClient != null)
+            {
+                _adsClient.Connect();
+            }
+        }
+
+        private void btn_Disconnect_ADS_Click(object sender, EventArgs e)
+        {
+            if (_adsClient != null)
+            {
+                _adsClient.Disconnect();
+            }
+        }
+
+        private async void btn_Update_ADS_Click(object sender, EventArgs e)
+        {
+            string host = txt_Host_ADS.Text.Trim();
+            int.TryParse(txt_Port_ADS.Text.Trim(), out int port);
+            string amsNetId = txt_AMSNetID_ADS.Text.Trim();
+            bool restartOnUpdate = chk_RestartOnUpdate_ADS.Checked;
+            await _adsClient.Update(host, port, amsNetId, restartOnUpdate);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _adsClient.ReadSubscribe("MAIN.fbBlink.bToggle1", "BOOL", 0, 200, 0, null);
+        }
+
+        #endregion
+
         #region Quick Tools
 
         private void btn_Open_LogViewer_Click(object sender, EventArgs e)
@@ -246,5 +283,6 @@ namespace GlitcherCoreDemoApp
 
         #endregion
 
+ 
     }
 }

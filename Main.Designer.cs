@@ -102,6 +102,18 @@
             txt_Server_MySQL = new TextBox();
             lbl_Server_MySQL = new Label();
             lbl_Port_MySQL = new Label();
+            grbx_ADS = new GroupBox();
+            chk_RestartOnUpdate_ADS = new CheckBox();
+            btn_Disconnect_ADS = new Button();
+            btn_Connect_ADS = new Button();
+            btn_Update_ADS = new Button();
+            txt_AMSNetID_ADS = new TextBox();
+            lbl_AMSNetID_ADS = new Label();
+            txt_Port_ADS = new TextBox();
+            txt_Host_ADS = new TextBox();
+            lbl_Host_ADS = new Label();
+            lbl_Port_ADS = new Label();
+            button1 = new Button();
             grbx_HTTP.SuspendLayout();
             grbx_WS.SuspendLayout();
             grbx_QuickTools.SuspendLayout();
@@ -109,6 +121,7 @@
             grbx_MQTT.SuspendLayout();
             grbx_SQLite.SuspendLayout();
             grbx_MySQL.SuspendLayout();
+            grbx_ADS.SuspendLayout();
             SuspendLayout();
             // 
             // grbx_HTTP
@@ -881,11 +894,138 @@
             lbl_Port_MySQL.TabIndex = 23;
             lbl_Port_MySQL.Text = "Port";
             // 
+            // grbx_ADS
+            // 
+            grbx_ADS.BackColor = Color.MintCream;
+            grbx_ADS.Controls.Add(button1);
+            grbx_ADS.Controls.Add(chk_RestartOnUpdate_ADS);
+            grbx_ADS.Controls.Add(btn_Disconnect_ADS);
+            grbx_ADS.Controls.Add(btn_Connect_ADS);
+            grbx_ADS.Controls.Add(btn_Update_ADS);
+            grbx_ADS.Controls.Add(txt_AMSNetID_ADS);
+            grbx_ADS.Controls.Add(lbl_AMSNetID_ADS);
+            grbx_ADS.Controls.Add(txt_Port_ADS);
+            grbx_ADS.Controls.Add(txt_Host_ADS);
+            grbx_ADS.Controls.Add(lbl_Host_ADS);
+            grbx_ADS.Controls.Add(lbl_Port_ADS);
+            grbx_ADS.Location = new Point(397, 449);
+            grbx_ADS.Margin = new Padding(3, 4, 3, 4);
+            grbx_ADS.Name = "grbx_ADS";
+            grbx_ADS.Padding = new Padding(3, 4, 3, 4);
+            grbx_ADS.Size = new Size(376, 255);
+            grbx_ADS.TabIndex = 9;
+            grbx_ADS.TabStop = false;
+            grbx_ADS.Text = "ADS Client Settings (Beckhoff TwinCAT)";
+            // 
+            // chk_RestartOnUpdate_ADS
+            // 
+            chk_RestartOnUpdate_ADS.AutoSize = true;
+            chk_RestartOnUpdate_ADS.Checked = true;
+            chk_RestartOnUpdate_ADS.CheckState = CheckState.Checked;
+            chk_RestartOnUpdate_ADS.Location = new Point(10, 132);
+            chk_RestartOnUpdate_ADS.Name = "chk_RestartOnUpdate_ADS";
+            chk_RestartOnUpdate_ADS.Size = new Size(140, 23);
+            chk_RestartOnUpdate_ADS.TabIndex = 25;
+            chk_RestartOnUpdate_ADS.Text = "Restart on Update";
+            chk_RestartOnUpdate_ADS.UseVisualStyleBackColor = true;
+            // 
+            // btn_Disconnect_ADS
+            // 
+            btn_Disconnect_ADS.Location = new Point(252, 161);
+            btn_Disconnect_ADS.Name = "btn_Disconnect_ADS";
+            btn_Disconnect_ADS.Size = new Size(114, 30);
+            btn_Disconnect_ADS.TabIndex = 29;
+            btn_Disconnect_ADS.Text = "Disconnect";
+            btn_Disconnect_ADS.UseVisualStyleBackColor = true;
+            btn_Disconnect_ADS.Click += btn_Disconnect_ADS_Click;
+            // 
+            // btn_Connect_ADS
+            // 
+            btn_Connect_ADS.Location = new Point(131, 161);
+            btn_Connect_ADS.Name = "btn_Connect_ADS";
+            btn_Connect_ADS.Size = new Size(114, 30);
+            btn_Connect_ADS.TabIndex = 28;
+            btn_Connect_ADS.Text = "Connect";
+            btn_Connect_ADS.UseVisualStyleBackColor = true;
+            btn_Connect_ADS.Click += btn_Connect_ADS_Click;
+            // 
+            // btn_Update_ADS
+            // 
+            btn_Update_ADS.Location = new Point(10, 161);
+            btn_Update_ADS.Name = "btn_Update_ADS";
+            btn_Update_ADS.Size = new Size(114, 30);
+            btn_Update_ADS.TabIndex = 27;
+            btn_Update_ADS.Text = "Update";
+            btn_Update_ADS.UseVisualStyleBackColor = true;
+            btn_Update_ADS.Click += btn_Update_ADS_Click;
+            // 
+            // txt_AMSNetID_ADS
+            // 
+            txt_AMSNetID_ADS.Location = new Point(150, 101);
+            txt_AMSNetID_ADS.Name = "txt_AMSNetID_ADS";
+            txt_AMSNetID_ADS.Size = new Size(203, 26);
+            txt_AMSNetID_ADS.TabIndex = 28;
+            txt_AMSNetID_ADS.Text = "127.0.0.1.1.1";
+            // 
+            // lbl_AMSNetID_ADS
+            // 
+            lbl_AMSNetID_ADS.AutoSize = true;
+            lbl_AMSNetID_ADS.Location = new Point(34, 104);
+            lbl_AMSNetID_ADS.Name = "lbl_AMSNetID_ADS";
+            lbl_AMSNetID_ADS.Size = new Size(110, 19);
+            lbl_AMSNetID_ADS.TabIndex = 26;
+            lbl_AMSNetID_ADS.Text = "PLC AMS Net ID";
+            // 
+            // txt_Port_ADS
+            // 
+            txt_Port_ADS.Location = new Point(150, 62);
+            txt_Port_ADS.Name = "txt_Port_ADS";
+            txt_Port_ADS.Size = new Size(203, 26);
+            txt_Port_ADS.TabIndex = 25;
+            txt_Port_ADS.Text = "851";
+            // 
+            // txt_Host_ADS
+            // 
+            txt_Host_ADS.Location = new Point(150, 27);
+            txt_Host_ADS.Name = "txt_Host_ADS";
+            txt_Host_ADS.Size = new Size(203, 26);
+            txt_Host_ADS.TabIndex = 24;
+            txt_Host_ADS.Text = "127.0.0.1";
+            // 
+            // lbl_Host_ADS
+            // 
+            lbl_Host_ADS.AutoSize = true;
+            lbl_Host_ADS.Location = new Point(42, 30);
+            lbl_Host_ADS.Name = "lbl_Host_ADS";
+            lbl_Host_ADS.Size = new Size(102, 19);
+            lbl_Host_ADS.TabIndex = 22;
+            lbl_Host_ADS.Text = "PLC IP Address";
+            // 
+            // lbl_Port_ADS
+            // 
+            lbl_Port_ADS.AutoSize = true;
+            lbl_Port_ADS.Location = new Point(27, 65);
+            lbl_Port_ADS.Name = "lbl_Port_ADS";
+            lbl_Port_ADS.Size = new Size(117, 19);
+            lbl_Port_ADS.TabIndex = 23;
+            lbl_Port_ADS.Text = "PLC Runtime Port";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(131, 204);
+            button1.Name = "button1";
+            button1.Size = new Size(114, 30);
+            button1.TabIndex = 30;
+            button1.Text = "Disconnect";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1167, 915);
+            Controls.Add(grbx_ADS);
             Controls.Add(grbx_MySQL);
             Controls.Add(grbx_SQLite);
             Controls.Add(grbx_MQTT);
@@ -909,6 +1049,8 @@
             grbx_SQLite.PerformLayout();
             grbx_MySQL.ResumeLayout(false);
             grbx_MySQL.PerformLayout();
+            grbx_ADS.ResumeLayout(false);
+            grbx_ADS.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -988,5 +1130,17 @@
         private TextBox txt_Server_MySQL;
         private Label lbl_Server_MySQL;
         private Label lbl_Port_MySQL;
+        private GroupBox grbx_ADS;
+        private CheckBox chk_RestartOnUpdate_ADS;
+        private Button btn_Disconnect_ADS;
+        private Button btn_Connect_ADS;
+        private Button btn_Update_ADS;
+        private TextBox txt_AMSNetID_ADS;
+        private Label lbl_AMSNetID_ADS;
+        private TextBox txt_Port_ADS;
+        private TextBox txt_Host_ADS;
+        private Label lbl_Host_ADS;
+        private Label lbl_Port_ADS;
+        private Button button1;
     }
 }
